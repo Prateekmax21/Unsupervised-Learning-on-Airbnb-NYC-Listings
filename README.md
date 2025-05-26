@@ -4,13 +4,13 @@
 
 ## Introduction: Letting the Data Speak
 
-Imagine you're browsing Airbnb for a place to stay in New York City. You scroll through endless options — small studios in Harlem, cozy lofts in Brooklyn, luxurious brownstones in Manhattan. Each one is priced differently, available on different days, and has a different vibe. Overwhelming, right?
+Imagine you're browsing Airbnb for a place to stay in New York City. You scroll through endless options, small studios in Harlem, cozy lofts in Brooklyn, luxurious brownstones in Manhattan. Each one is priced differently, available on different days, and has a different vibe. Overwhelming, right?
 
-Now imagine trying to make sense of thousands of these listings — not as a tourist, but as a data scientist. Can we uncover patterns in all this chaos? Are there groups of listings that naturally go together, like budget stays that are always open, or expensive listings hosted by professionals?
+Now imagine trying to make sense of thousands of these listings, not as a tourist, but as a data scientist. Can we uncover patterns in all this chaos? Are there groups of listings that naturally go together, like budget stays that are always open, or expensive listings hosted by professionals?
 
 That’s the journey we took in this project.
 
-We used unsupervised learning — a type of machine learning that doesn’t need labels. Instead of telling the model what’s what, we let the data speak for itself.
+We used unsupervised learning, a type of machine learning that doesn’t need labels. Instead of telling the model what’s what, we let the data speak for itself.
 
 Our tools included:
 - PCA (Principal Component Analysis): to simplify and visualize complex data
@@ -63,7 +63,7 @@ Now we were ready to dig in.
 
 ## Peeking Under the Hood with PCA
 
-Imagine trying to understand listings using 10 different features. That’s like trying to visualize a 10-dimensional shape — it’s impossible for the human brain. Enter PCA: a technique that transforms complex data into fewer "principal components" that still retain most of the information.
+Imagine trying to understand listings using 10 different features. That’s like trying to visualize a 10-dimensional shape, it’s impossible for the human brain. Enter PCA: a technique that transforms complex data into fewer "principal components" that still retain most of the information.
 
 We applied PCA to our cleaned, standardized data. Here’s what we found:
 - PC1 (the first principal component) explained ~26% of the variance
@@ -85,11 +85,11 @@ These plots helped us decide to keep the first 2–3 PCs for clustering.
 
 ## What If Some Data Is Missing?
 
-To mimic real-world messiness, we randomly removed about 5% of the data and tried to fill it back in using matrix completion — a clever trick based on PCA.
+To mimic real-world messiness, we randomly removed about 5% of the data and tried to fill it back in using matrix completion, a clever trick based on PCA.
 
-Using the top 5 components, we reconstructed the missing values and then compared them to the originals. The correlation was ~0.51 — not perfect, but pretty solid for data we pretended not to know.
+Using the top 5 components, we reconstructed the missing values and then compared them to the originals. The correlation was ~0.51, not perfect, but pretty solid for data we pretended not to know.
 
-This experiment showed that PCA isn’t just for simplification — it can also help recover missing data!
+This experiment showed that PCA isn’t just for simplification, it can also help recover missing data!
 
 ---
 
@@ -139,7 +139,7 @@ Cluster 2:
 - Long minimum stays
 - Could be occasional or passive rentals
 
-These weren’t just statistical groups — they told real stories about different types of hosts and listings.
+These weren’t just statistical groups, they told real stories about different types of hosts and listings.
 
 ---
 
@@ -177,7 +177,7 @@ Single linkage tends to form long "chains" of points. It can be sensitive to noi
 - K-Means clustering found clear and interpretable groups in the data  
 - Hierarchical clustering gave us another lens to confirm our findings  
 
-Together, these tools let us uncover real, meaningful patterns — all without knowing anything about the listings ahead of time.
+Together, these tools let us uncover real, meaningful patterns, all without knowing anything about the listings ahead of time.
 
 ---
 

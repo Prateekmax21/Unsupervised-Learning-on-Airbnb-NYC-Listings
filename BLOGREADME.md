@@ -1,6 +1,6 @@
-# 🏩 Clustering the City: Uncovering Patterns in NYC Airbnb Listings with Unsupervised Learning
+# Clustering the City: Uncovering Patterns in NYC Airbnb Listings with Unsupervised Learning
 
-## 📌 Introduction
+## Introduction
 
 Airbnb has completely changed how people travel. Instead of booking hotels, travelers can now rent apartments, spare rooms, or even couches directly from locals. But have you ever wondered: Are there patterns in these listings? Do budget-friendly rentals behave differently than luxury ones? Are there different "types" of hosts?
 
@@ -8,7 +8,7 @@ That's what we set out to discover in this project. We used real Airbnb data fro
 
 We looked at things like price, number of reviews, how often a place is available, and how many properties a host manages. Using tools like PCA, K-Means, and Hierarchical Clustering, we tried to uncover what types of listings exist in NYC's Airbnb market.
 
-## 🧠 Theoretical Background
+## Theoretical Background
 
 ### Principal Component Analysis (PCA)
 
@@ -30,7 +30,7 @@ This method builds a tree of clusters (called a dendrogram). We don't have to ch
 
 Since real-world data is messy, we simulated missing values and used PCA to fill them in. This showed us how PCA can still work when the dataset isn’t perfect.
 
-## 💜 Methodology
+## Methodology
 
 ### Cleaning
 
@@ -80,7 +80,7 @@ We projected the data onto PC1 and PC2 and applied:
 
 We used complete, average, and single linkage to build dendrograms. Cutting the tree at 3 clusters gave similar groups to K-Means. Complete linkage gave the clearest separation.
 
-## 📊 Results and Visualizations
+## Results and Visualizations
 
 Include these plots in your notebook:
 - Scree Plot (PVE vs PC)
@@ -90,7 +90,7 @@ Include these plots in your notebook:
 - Cluster centroids table
 - Dendrograms (Complete, Average, Single)
 
-## 💭 Discussion
+## Discussion
 
 - PCA helped reduce dimensionality and noise
 - The loadings (V*) told us which features matter most (price, availability, reviews)
@@ -104,22 +104,16 @@ Comparing the clusters helped us understand different behaviors:
 
 These insights can help Airbnb, hosts, and even city planners make smarter decisions.
 
-## 📅 Conclusion
+## Conclusion
 
 Unsupervised learning revealed clear patterns in NYC Airbnb data. Without any labels, we discovered 3 main types of listings, learned which features separate them, and gained insights into different rental strategies.
 
 This approach can be scaled to other cities or combined with geolocation data for even more insights. It’s a great example of how data science can turn raw data into useful information.
 
-## 📒 References
+## References
 
 - Inside Airbnb Dataset: http://insideairbnb.com/get-the-data.html
 - scikit-learn documentation: https://scikit-learn.org/stable/
 - Tan, P.-N., Steinbach, M., & Kumar, V. (2019). Introduction to Data Mining
 - Jolliffe, I. T. (2002). Principal Component Analysis. Springer
 """
-
-# Write the markdown to file
-output_path = Path("/mnt/data/nyc_airbnb_clustering_blog.md")
-output_path.write_text(markdown_content)
-
-output_path.name  # Return filename for user to download

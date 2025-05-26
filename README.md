@@ -1,6 +1,6 @@
 # Uncovering Airbnb Patterns in NYC — A Journey Through Unsupervised Learning
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Introduction: Letting the Data Speak](#introduction-letting-the-data-speak)
 - [What We Used: The Dataset](#what-we-used-the-dataset)

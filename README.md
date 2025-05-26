@@ -53,16 +53,21 @@ We simulated missing values, ran PCA with 5 components, and then filled them in.
 - Hierarchical clustering was also applied using complete, average, and single linkage methods.
 
 ## 📊 Results and Visualizations
-
-Include these plots in your notebook:
-- Scree Plot (PVE vs PC)
-- Cumulative PVE
-- Scatter of PC1 vs PC2
-- K-Means cluster scatter
-- Cluster centroids table
-- Dendrograms (Complete, Average, Single)
-- Complete linkage with cut line
+- Scree Plot 
+![PCA](https://github.com/user-attachments/assets/7eb64427-7dce-4657-9579-f83248792c06)
+- Single linkage Dendogram
+![single linkage](https://github.com/user-attachments/assets/656815c4-3236-42c5-8ea7-a4d29220d3bb)
+- Average linkage Dendogram
+![average linkage](https://github.com/user-attachments/assets/9479783f-050d-45b9-a99e-41f752eefd1f)
+- Complete linkage Dendogram
+![complete linkage](https://github.com/user-attachments/assets/8e160b3d-41f0-4b55-b5cf-fcdaf238fa64)
+- Complete linkage Dendogram with cut height 4.5
+![complete linkage with cut height 4 5](https://github.com/user-attachments/assets/a8eb4db3-1ebb-493c-bced-555211c257d6)
 - Elbow & Silhouette plots
+![Kmeans clusters](https://github.com/user-attachments/assets/72f5d65e-3b1f-49c5-bc96-0e962ba8cda0)
+- K-Means cluster scatter
+![cluster k=3](https://github.com/user-attachments/assets/0b5935c8-8af5-4eab-93bd-0a27cae46689)
+
 
 ## 💭 Discussion
 

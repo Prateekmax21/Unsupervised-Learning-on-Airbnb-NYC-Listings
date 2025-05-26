@@ -1,98 +1,206 @@
-# Clustering the City: Uncovering Patterns in NYC Airbnb Listings with Unsupervised Learning
+# Uncovering Airbnb Patterns in NYC — A Journey Through Unsupervised Learning
 
-## 📌 Introduction
+---
 
-Airbnb has completely transformed travel by making it easier for people to rent out their homes or rooms to guests looking for short-term stays. This creates a huge, messy, but super interesting pool of data. In this project, we asked: **Are there hidden patterns among Airbnb listings in NYC?** Could we find categories like "budget places that are always available" or "expensive ones run like hotels"?
+## Introduction: Letting the Data Speak
 
-To dig into this, we used real NYC Airbnb data and applied **unsupervised learning**—that means we didn't tell the model what to look for, we let it discover the structure on its own. We focused on features like price, availability, number of reviews, and how many listings a host has.
+Imagine you're browsing Airbnb for a place to stay in New York City. You scroll through endless options — small studios in Harlem, cozy lofts in Brooklyn, luxurious brownstones in Manhattan. Each one is priced differently, available on different days, and has a different vibe. Overwhelming, right?
 
-## 🧠 Theoretical Background
+Now imagine trying to make sense of thousands of these listings — not as a tourist, but as a data scientist. Can we uncover patterns in all this chaos? Are there groups of listings that naturally go together, like budget stays that are always open, or expensive listings hosted by professionals?
 
-### Principal Component Analysis (PCA)
-Think of PCA like condensing all the information from 10 columns into just 2 or 3, while keeping most of what matters. It makes visualizations easier and helps remove noise.
+That’s the journey we took in this project.
 
-### Singular Value Decomposition (SVD)
-This is the mathematical engine behind PCA. It helps break down complex datasets and is great for filling in missing data, like if a review count is blank.
+We used unsupervised learning — a type of machine learning that doesn’t need labels. Instead of telling the model what’s what, we let the data speak for itself.
 
-### K-Means Clustering
-This groups listings into clusters based on their similarity. We choose a number `k` (e.g., 3 clusters), and it assigns each listing to one of the clusters by trying to minimize the distance within groups.
+Our tools included:
+- PCA (Principal Component Analysis): to simplify and visualize complex data
+- Matrix Completion: to handle missing values like in the real world
+- K-Means Clustering: to let listings group themselves based on behavior
+- Hierarchical Clustering: to explore nested structures and relationships
 
-### Hierarchical Clustering
-Instead of pre-choosing `k`, this builds a tree (dendrogram) showing how all listings relate. We can “cut” this tree at different heights to form groups.
+All of this was applied to publicly available Airbnb data for New York City. Our goal? To find natural groupings and insights that could help both hosts and Airbnb itself better understand their marketplace.
 
-### Matrix Completion
-Real-world data has gaps. To simulate this, we randomly removed 5% of values and used PCA to predict/fill them. This shows how robust PCA can be even when data isn’t perfect.
+---
 
-## 💜 Methodology
+## What We Used: The Dataset
 
-### Data Cleaning
-We picked features we care about:
-- Price
-- Minimum & Maximum nights
-- Number of reviews & reviews per month
-- Availability in a year
-- Number of listings a host manages
-- Accommodates, bathrooms, and bedrooms
+We pulled our data from [Inside Airbnb](http://insideairbnb.com/get-the-data.html), which provides real-world Airbnb listings scraped from the site.
 
-Then we dropped rows with missing or blank values, filtered extreme outliers (like $10,000 listings), and scaled the data so each feature is equally weighted using `StandardScaler`.
+From the full dataset, we focused on the following numeric columns to describe a listing:
 
-### PCA + Variance Explained
-We used PCA to reduce dimensions and found that:
-- PC1 explains ~26% of variance
-- First 3 components explain ~58%
-- All 10 together explain 100%
+- `price`
+- `minimum_nights`
+- `maximum_nights`
+- `number_of_reviews`
+- `reviews_per_month`
+- `availability_365`
+- `calculated_host_listings_count`
+- `accommodates`
+- `bathrooms`
+- `bedrooms`
 
-We used line plots to show this instead of bars—cleaner and easier to read.
+These features give us a snapshot of how a listing behaves, how expensive it is, how long you can stay, how many reviews it gets, and how active the host is.
 
-### Matrix Completion
-We simulated missing values, ran PCA with 5 components, and then filled them in. The correlation between the actual and predicted values was ~0.51—not bad!
+Before we could do anything useful, though, we had to clean up the mess…
 
-### Clustering Steps
-- We projected the data into PC1 and PC2 for clustering.
-- K-Means with `k=3` gave distinct, meaningful clusters.
-- Hierarchical clustering was also applied using complete, average, and single linkage methods.
+---
 
-## 📊 Results and Visualizations
-- Scree Plot 
-![PCA](https://github.com/user-attachments/assets/7eb64427-7dce-4657-9579-f83248792c06)
-- Single linkage Dendogram
-![single linkage](https://github.com/user-attachments/assets/656815c4-3236-42c5-8ea7-a4d29220d3bb)
-- Average linkage Dendogram
-![average linkage](https://github.com/user-attachments/assets/9479783f-050d-45b9-a99e-41f752eefd1f)
-- Complete linkage Dendogram
-![complete linkage](https://github.com/user-attachments/assets/8e160b3d-41f0-4b55-b5cf-fcdaf238fa64)
-- Complete linkage Dendogram with cut height 4.5
-![complete linkage with cut height 4 5](https://github.com/user-attachments/assets/a8eb4db3-1ebb-493c-bced-555211c257d6)
-- Elbow & Silhouette plots
-![Kmeans clusters](https://github.com/user-attachments/assets/72f5d65e-3b1f-49c5-bc96-0e962ba8cda0)
-- K-Means cluster scatter
-![cluster k=3](https://github.com/user-attachments/assets/0b5935c8-8af5-4eab-93bd-0a27cae46689)
+## Cleaning Up the Chaos
 
+Real-world data is messy. Airbnb listings are no exception. Some listings had missing prices, blank review scores, or unrealistic values like minimum stays of 1000 nights.
 
-## 💭 Discussion
+Here’s what we did:
+- Dropped rows with missing or blank values
+- Converted `price` from strings like "$150" to numbers
+- Removed extreme outliers (like absurd night limits)
+- Standardized all features so they’re on the same scale
 
-We got a lot out of this unsupervised dive:
-- PCA helped reduce noise and highlight what's important
-- The first few PCs captured most of the meaningful variation
-- K-Means found three clear types of listings:
-  1. Budget listings with high availability
-  2. Expensive listings likely run by professional hosts
-  3. Low-activity listings for longer stays
+Why standardize? Because we don’t want features like `price` (which can be in the thousands) to overpower features like `bathrooms` (usually between 1 and 3).
 
-Hierarchical clustering validated our groups and helped us explore alternatives.
+Now we were ready to dig in.
 
-This info is gold for Airbnb hosts (how to price and position), travelers (what to expect), and even city planners (how short-term rentals impact neighborhoods).
+---
 
-## 📅 Conclusion
+## Peeking Under the Hood with PCA
 
-Even without knowing anything about the listings ahead of time (no labels!), we uncovered natural groupings in NYC's Airbnb data. These methods—especially PCA and clustering—gave us structure, insights, and visualizations from messy real-world data.
+Imagine trying to understand listings using 10 different features. That’s like trying to visualize a 10-dimensional shape — it’s impossible for the human brain. Enter PCA: a technique that transforms complex data into fewer "principal components" that still retain most of the information.
 
-Unsupervised learning is powerful because it finds stories we didn’t even know to look for.
+We applied PCA to our cleaned, standardized data. Here’s what we found:
+- PC1 (the first principal component) explained ~26% of the variance
+- The first 3 PCs together explained ~58%
+- The first 5 PCs captured over 80% of the variance
 
-## 📒 References
+This told us we could safely reduce our dataset to 2 or 3 dimensions for analysis without losing much information.
 
-1. Inside Airbnb Dataset: [http://insideairbnb.com/get-the-data.html](http://insideairbnb.com/get-the-data.html)  
-2. scikit-learn documentation: [https://scikit-learn.org/stable/](https://scikit-learn.org/stable/)  
-3. Tan, P.-N., Steinbach, M., & Kumar, V. (2019). *Introduction to Data Mining*  
-4. Jolliffe, I. T. (2002). *Principal Component Analysis*, Springer  
-"""
+We visualized this in two key plots:
+
+**Scree Plot**: shows how much variance each PC explains  
+**Cumulative Variance Plot**: adds them up to show total variance
+
+![PCA](https://github.com/user-attachments/assets/517d3c97-f9ee-4cfd-9858-677fa6566e8c)
+
+These plots helped us decide to keep the first 2–3 PCs for clustering.
+
+---
+
+## What If Some Data Is Missing?
+
+To mimic real-world messiness, we randomly removed about 5% of the data and tried to fill it back in using matrix completion — a clever trick based on PCA.
+
+Using the top 5 components, we reconstructed the missing values and then compared them to the originals. The correlation was ~0.51 — not perfect, but pretty solid for data we pretended not to know.
+
+This experiment showed that PCA isn’t just for simplification — it can also help recover missing data!
+
+---
+
+## Letting the Data Organize Itself: K-Means Clustering
+
+With our simplified data in hand (PC1 and PC2), we used K-Means to group listings into natural clusters.
+
+But how many clusters should we use? We tested different values of `k` (2 through 6) and used two tools to help us decide:
+
+**Elbow Plot (Inertia)**: Shows when adding more clusters stops improving fit  
+**Silhouette Scores**: Measures how tightly grouped each cluster is
+
+![Kmeans clusters](https://github.com/user-attachments/assets/70f60ff0-5551-4032-80cd-7a0d1d1ef90b)
+
+Both pointed to `k = 3` as the sweet spot.
+
+Then, we plotted the listings again, now colored by cluster. The result was clear: K-Means had found three distinct groups.
+
+![cluster k=3](https://github.com/user-attachments/assets/71548f9d-b312-4651-964e-43cb47f20569)
+
+This plot shows how the listings are grouped into three clusters using K-Means on the first two principal components. Each color represents a different cluster.
+
+![centroid](https://github.com/user-attachments/assets/583d1442-af35-4299-b005-ed5777d2799d)
+
+Here we show the same clusters as before, but with red "X" markers representing the centroid of each cluster.
+
+---
+
+## What Were the Clusters?
+
+To find out what these clusters meant, we looked at the average values of each feature per group.
+
+Cluster 0:
+- Low price
+- High availability
+- Many reviews
+- Likely budget-friendly, highly active hosts
+
+Cluster 1:
+- High price
+- Large number of bedrooms and accommodates
+- Possibly commercial or luxury listings
+
+Cluster 2:
+- Medium price
+- Low reviews
+- Long minimum stays
+- Could be occasional or passive rentals
+
+These weren’t just statistical groups — they told real stories about different types of hosts and listings.
+
+---
+
+## Going Deeper with Hierarchical Clustering
+
+Unlike K-Means, hierarchical clustering doesn’t require us to pick the number of clusters up front. It creates a tree-like diagram called a dendrogram that shows how listings group together at different levels.
+
+We tested three linkage strategies:
+- Complete Linkage: merges groups with the farthest points
+- Average Linkage: merges based on average distance
+- Single Linkage: merges closest individual points (can get "stringy")
+
+![complete linkage](https://github.com/user-attachments/assets/dc543ec8-2d86-429c-847b-1a21a4137fac)
+
+This dendrogram groups listings using complete linkage. It gives a nested view of cluster similarity.
+
+![complete linkage with cut height 4 5](https://github.com/user-attachments/assets/2722c0f0-14b3-4271-956c-6067dcebe999)
+
+The red dashed line shows a cut at height 4.5, dividing the tree into 3 main clusters that align well with K-Means.
+
+![average linkage](https://github.com/user-attachments/assets/8ed74354-64b0-40ee-840a-25c847e73599)
+
+Average linkage merges clusters based on the average pairwise distances between them. It gives more balanced clusters compared to single linkage.
+
+![single linkage](https://github.com/user-attachments/assets/54a1c8f4-b5a5-494b-9ffe-76219896a8aa)
+
+Single linkage tends to form long "chains" of points. It can be sensitive to noise and often creates elongated clusters.
+
+---
+
+## What We Learned
+
+- PCA is super useful for reducing complexity while keeping the signal  
+- Matrix completion with PCA isn’t perfect, but works well for filling small gaps  
+- K-Means clustering found clear and interpretable groups in the data  
+- Hierarchical clustering gave us another lens to confirm our findings  
+
+Together, these tools let us uncover real, meaningful patterns — all without knowing anything about the listings ahead of time.
+
+---
+
+## Why It Matters
+
+This kind of analysis can help:
+- Hosts see where their listing fits in the market
+- Airbnb optimize search and recommendations
+- Analysts understand marketplace behavior
+
+It also shows how unsupervised learning can be powerful in the messy, unlabeled world of real data.
+
+---
+
+## References
+
+1. Inside Airbnb Data: http://insideairbnb.com/get-the-data.html  
+2. Jolliffe, I. T. (2002). Principal Component Analysis. Springer.  
+3. Tan, P.-N., Steinbach, M., & Kumar, V. (2019). Introduction to Data Mining.  
+4. scikit-learn documentation: https://scikit-learn.org/stable/  
+5. ISLP Lecture Notebooks: Ch12-1.ipynb, Ch12-2.ipynb  
+6. GeeksforGeeks PCA Tutorial: https://www.geeksforgeeks.org/principal-component-analysis-pca/
+
+---
+
+This blog is based on our Practical Homework for DATA 5322: Statistical Machine Learning II (Spring 2025). It reflects everything we learned and everything we discovered by letting the data speak for itself.

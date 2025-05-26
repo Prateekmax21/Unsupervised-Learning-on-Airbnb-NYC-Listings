@@ -114,6 +114,9 @@ This approach can be scaled to other cities or combined with geolocation data fo
 
 - Inside Airbnb Dataset: http://insideairbnb.com/get-the-data.html
 - scikit-learn documentation: https://scikit-learn.org/stable/
+- Clustering in ML : https://scikit-learn.org/stable/modules/clustering.html
+- ISLP Textbook and Lecture Code: Ch12-1.ipynb, Ch12-2.ipynb
+- PCA: https://www.geeksforgeeks.org/principal-component-analysis-pca/
 - Tan, P.-N., Steinbach, M., & Kumar, V. (2019). Introduction to Data Mining
 - Jolliffe, I. T. (2002). Principal Component Analysis. Springer
 """

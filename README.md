@@ -1,4 +1,4 @@
-
+# NYC Airbnb Data: An Unsupervised Learning Approach
 
 This project explores hidden patterns in New York City Airbnb listings using unsupervised learning techniques. The aim is to uncover distinct groups of listings based on pricing, availability, and review behaviors—without using any predefined labels.
 

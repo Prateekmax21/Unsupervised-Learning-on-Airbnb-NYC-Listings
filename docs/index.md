@@ -1,6 +1,6 @@
 
 
-By Nikhil G. Ghugare & Prateek Pagare
+By Nikhil Ghugare & Prateek Pagare
 
 [Github Repository](https://github.com/Prateekmax21/Unsupervised-Learning-on-Airbnb-NYC-Listings)
 

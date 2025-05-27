@@ -1,19 +1,6 @@
 # Uncovering Airbnb Patterns in NYC — A Journey Through Unsupervised Learning
-
-## Table of Contents
-
-- [Introduction: Letting the Data Speak](#introduction-letting-the-data-speak)
-- [What We Used: The Dataset](#what-we-used-the-dataset)
-- [Cleaning Up the Chaos](#cleaning-up-the-chaos)
-- [Peeking Under the Hood with PCA](#peeking-under-the-hood-with-pca)
-- [What If Some Data Is Missing?](#what-if-some-data-is-missing)
-- [Letting the Data Organize Itself: K-Means Clustering](#letting-the-data-organize-itself-k-means-clustering)
-- [What Were the Clusters?](#what-were-the-clusters)
-- [Going Deeper with Hierarchical Clustering](#going-deeper-with-hierarchical-clustering)
-- [What We Learned](#what-we-learned)
-- [Why It Matters](#why-it-matters)
-- [References](#references)
-
+- By Nikhil G. Ghugare & Prateek Pagare
+- [Github](https://github.com/Prateekmax21/Unsupervised-Learning-on-Airbnb-NYC-Listings)
 ---
 
 ## Introduction: Letting the Data Speak

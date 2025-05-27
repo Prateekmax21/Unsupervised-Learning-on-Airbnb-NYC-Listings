@@ -1,4 +1,4 @@
-# NYC Airbnb Data: An Unsupervised Learning Approach
+
 
 By Nikhil G. Ghugare & Prateek Pagare
 

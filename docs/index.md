@@ -203,7 +203,10 @@ It also shows how unsupervised learning can be powerful in the messy, unlabeled 
 4. scikit-learn documentation: https://scikit-learn.org/stable/  
 5. ISLP Lecture Notebooks: Ch12-1.ipynb, Ch12-2.ipynb  
 6. GeeksforGeeks PCA Tutorial: https://www.geeksforgeeks.org/principal-component-analysis-pca/
+7. scikit-learn Documentation: https://scikit-learn.org/stable/
+8. Clustering in ML : https://scikit-learn.org/stable/modules/clustering.html
+9. deploy github pages : https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
 ---
 
-This blog is based on our Practical Homework for DATA 5322: Statistical Machine Learning II (Spring 2025). It reflects everything we learned and everything we discovered by letting the data speak for itself.
+This blog is based on our Practical Homework for DATA 5322: Statistical Machine Learning II (Spring 2025). It reflects everything we learned and everything we discovered in course.

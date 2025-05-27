@@ -1,6 +1,7 @@
-# Uncovering Airbnb Patterns in NYC — A Journey Through Unsupervised Learning
+# Unsupervised Learning on Airbnb NYC Listings
 By Nikhil G. Ghugare & Prateek Pagare
-[Github](https://github.com/Prateekmax21/Unsupervised-Learning-on-Airbnb-NYC-Listings)
+---
+[Github Repository](https://github.com/Prateekmax21/Unsupervised-Learning-on-Airbnb-NYC-Listings)
 ---
 
 ## Introduction: Letting the Data Speak
